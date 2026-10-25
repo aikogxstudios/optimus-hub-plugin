@@ -2,6 +2,8 @@
 
 A marketplace panel for [Orca ADE](https://www.onorca.dev): Agent Skills, Orca plugins and MCP servers in one place.
 
+Site: https://aikogxstudios.github.io/optimus-hub-plugin/
+
 ![The Optimus Hub panel](docs/screenshot.png)
 
 ## What it does
