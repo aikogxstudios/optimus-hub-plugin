@@ -1,0 +1,20 @@
+{
+  "name": "Optimus Hub Marketplace",
+  "owner": "aikogxstudios",
+  "plugins": [
+    {
+      "id": "optimus.optimus-hub",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/aikogxstudios/optimus-hub-plugin.git",
+        "ref": "v0.2.0"
+      },
+      "description": "Marketplace of skills, plugins, and MCP servers for Orca ADE agents.",
+      "categories": [
+        "marketplace",
+        "tools",
+        "official"
+      ]
+    }
+  ]
+}

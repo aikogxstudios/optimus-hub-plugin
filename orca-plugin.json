@@ -1,0 +1,33 @@
+{
+  "manifestVersion": 1,
+  "id": "optimus-hub",
+  "publisher": "optimus",
+  "name": "Optimus Hub",
+  "version": "0.2.0",
+  "description": "Marketplace of skills, plugins, and MCP servers for Orca ADE agents.",
+  "engines": {
+    "orca": ">=1.4.0"
+  },
+  "pluginApi": 1,
+  "contributes": {
+    "panels": [
+      {
+        "id": "optimus-hub-marketplace",
+        "title": "Optimus Hub",
+        "icon": "store",
+        "entry": "panel/index.html"
+      }
+    ]
+  },
+  "capabilities": [
+    {
+      "kind": "workspace:read"
+    },
+    {
+      "kind": "notifications:show"
+    },
+    {
+      "kind": "terminal:send"
+    }
+  ]
+}
