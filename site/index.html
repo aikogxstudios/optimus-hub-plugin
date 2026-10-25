@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Optimus Hub v0.2.0: an Orca ADE plugin that indexes skills, MCP servers and collections from a Git-backed marketplace.">
+  <meta name="color-scheme" content="dark">
+  <title>Optimus Hub — Marketplace Plugin for Orca ADE</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <!-- Sticky Top Navigation -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <p class="brand">
+        <span class="prompt" aria-hidden="true">❯</span>
+        <span class="brand-name">OPTIMUS-HUB</span>
+        <span class="version" id="brand-version">v0.2.0</span>
+      </p>
+      <nav aria-label="Main Navigation">
+        <a href="#what"><span class="nav-num" aria-hidden="true">01</span> WHAT</a>
+        <a href="#how"><span class="nav-num" aria-hidden="true">02</span> HOW</a>
+        <a href="#install"><span class="nav-num" aria-hidden="true">03</span> INSTALL</a>
+        <a href="#permissions"><span class="nav-num" aria-hidden="true">04</span> PERMISSIONS</a>
+        <a href="#security"><span class="nav-num" aria-hidden="true">05</span> SECURITY</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main id="content" class="site-main">
+
+    <!-- Hero Section -->
+    <section class="hero-wrapper" aria-labelledby="hero-title">
+      <div class="hero container">
+        <div class="hero-text">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> ORCA ADE PLUGIN // EXPERIMENTAL SPEC</p>
+          <h1 id="hero-title">Optimus Hub</h1>
+          <p class="lead">
+            A deterministic marketplace index for Orca ADE: skills, MCP servers and collections,
+            resolved from Git repositories, cryptographic hash-verified before install, and activated only after explicit user consent.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" id="hero-install-btn" href="#install">Install v0.2.0</a>
+            <a class="btn btn-ghost" href="#how">Explore Architecture</a>
+          </div>
+          <div class="hero-metrics" role="list" aria-label="Key operational guarantees">
+            <div class="metric-item" role="listitem">
+              <span class="metric-val">100%</span>
+              <span class="metric-lbl">OFFLINE &amp; SANDBOXED</span>
+            </div>
+            <span class="metric-sep" aria-hidden="true">│</span>
+            <div class="metric-item" role="listitem">
+              <span class="metric-val">SHA-256</span>
+              <span class="metric-lbl">INTEGRITY VERIFIED</span>
+            </div>
+            <span class="metric-sep" aria-hidden="true">│</span>
+            <div class="metric-item" role="listitem">
+              <span class="metric-val">GIT-BASED</span>
+              <span class="metric-lbl">REPRODUCIBLE REFS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Window Block (Expansive & High-Impact) -->
+        <div class="hero-visual">
+          <div class="terminal" aria-label="Simulated install flow in Orca terminal">
+            <!-- Terminal Header / Title Bar -->
+            <div class="terminal-bar">
+              <div class="terminal-dots" aria-hidden="true">
+                <span class="dot dot-r" title="Close"></span>
+                <span class="dot dot-y" title="Minimize"></span>
+                <span class="dot dot-g" title="Maximize"></span>
+              </div>
+              <div class="terminal-tab" aria-hidden="true">
+                <span class="tab-icon">❯_</span>
+                <span class="terminal-title">optimus — terminal</span>
+              </div>
+              <div class="terminal-actions">
+                <button type="button" class="term-replay-btn" id="term-replay" title="Replay terminal animation" aria-label="Replay terminal animation">
+                  <span class="replay-icon" aria-hidden="true">↻</span> replay
+                </button>
+                <div class="term-status-pill" title="Security sandbox enforced">
+                  <span class="term-status-dot" aria-hidden="true"></span>
+                  <span id="term-status-label" class="term-status-text">ACTIVE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal Screen / Body -->
+            <div class="terminal-body">
+              <!-- Session Header Banner (Original Optimus Hub Version) -->
+              <div class="t-session-banner" aria-hidden="true">
+                <span class="t-banner-line" id="t-banner-version">Optimus Hub v0.2.0 · tty1</span>
+                <span class="t-banner-line">Security policy: STRICT · Isolation: CONTAINERIZED</span>
+              </div>
+
+              <!-- Interactive Prompt Line -->
+              <div class="t-line t-input">
+                <span class="t-prompt-prefix" aria-hidden="true"><span class="t-dir">~/orca</span> <span class="t-branch">(main)</span> <span class="t-prompt">❯</span></span>
+                <span class="t-cmd-line"><span class="t-cmd" id="t-cmd"></span><span class="cursor" id="t-cursor" aria-hidden="true">▍</span></span>
+              </div>
+
+              <!-- Execution Output Stream -->
+              <div class="t-output-stream" role="log" aria-live="polite">
+                <p class="t-line t-out" hidden><span class="t-step" aria-hidden="true">[1/4]</span> <span class="t-label">FETCH</span> <span class="t-sep">›</span> Resolving index from git: <span class="t-bright">optimus-hub-plugin</span> (ref: <span id="t-term-ref">v0.2.0</span>)</p>
+                <p class="t-line t-out" hidden><span class="t-step" aria-hidden="true">[2/4]</span> <span class="t-label">VERIFY</span> <span class="t-sep">›</span> Manifest schema valid · SHA-256 tree digest verified</p>
+                <p class="t-line t-out" hidden><span class="t-step" aria-hidden="true">[3/4]</span> <span class="t-label">CONSENT</span> <span class="t-sep">›</span> Required: <span class="t-pill">workspace:read</span> <span class="t-pill">notifications:show</span> <span class="t-pill">terminal:send</span></p>
+                <p class="t-line t-out t-sub-line" hidden><span class="t-indent" aria-hidden="true">      ↳</span> Explicit consent granted by user via security dialog</p>
+                <p class="t-line t-out" hidden><span class="t-step" aria-hidden="true">[4/4]</span> <span class="t-label">MOUNT</span> <span class="t-sep">›</span> Launching sandboxed panel frame (0 network, 0 disk)</p>
+                <p class="t-line t-out t-ok" hidden><span class="t-check" aria-hidden="true">✔</span> Ready: Optimus Hub panel mounted &amp; active in Orca ADE</p>
+              </div>
+
+              <!-- Terminal Statusline / Footer -->
+              <div class="terminal-statusline" aria-hidden="true">
+                <div class="statusline-left">
+                  <span class="status-mode">NORMAL</span>
+                  <span class="status-sep">│</span>
+                  <span class="status-file">orca:terminal</span>
+                </div>
+                <div class="statusline-right">
+                  <span class="status-sec">SANDBOX: ENFORCED</span>
+                  <span class="status-sep">│</span>
+                  <span class="status-net">NET: 0</span>
+                  <span class="status-sep">│</span>
+                  <span class="status-disk">DISK: 0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container sections-wrapper">
+
+      <!-- 01: What it does -->
+      <section id="what" class="section section-what" aria-labelledby="what-title">
+        <div class="section-lead-col">
+          <header class="section-header">
+            <span class="section-num" aria-hidden="true">01</span>
+            <p class="section-eyebrow">CAPABILITY SCOPE</p>
+            <h2 id="what-title">WHAT IT DOES</h2>
+          </header>
+          <p class="section-intro">
+            Optimus Hub bridges Orca's multi-agent runtime with a decentralized repository index. It exposes curated capabilities while enforcing zero-privilege defaults and total execution isolation.
+          </p>
+          <div class="section-spec-box">
+            <p class="spec-label">RUNTIME ISOLATION</p>
+            <p class="spec-desc">No ambient authority. Every skill, server and extension operates inside strict capability boundaries with instant rollback.</p>
+          </div>
+        </div>
+
+        <div class="section-content-col">
+          <dl class="def-rows">
+            <div class="def-row">
+              <dt class="def-term"><span class="term-prefix" aria-hidden="true">01.1 //</span> Discover</dt>
+              <dd class="def-desc">Browse the marketplace index. Every entry declares its Git source and ref, so each listing is reproducible.</dd>
+            </div>
+            <div class="def-row">
+              <dt class="def-term"><span class="term-prefix" aria-hidden="true">01.2 //</span> Skills</dt>
+              <dd class="def-desc">Reusable instruction packs for planning, code review and hand-off between worktrees, installed as versioned content.</dd>
+            </div>
+            <div class="def-row">
+              <dt class="def-term"><span class="term-prefix" aria-hidden="true">01.3 //</span> MCP servers</dt>
+              <dd class="def-desc">MCP server entries listed with their origin, ready to connect to your agents without leaving Orca.</dd>
+            </div>
+            <div class="def-row">
+              <dt class="def-term"><span class="term-prefix" aria-hidden="true">01.4 //</span> Installed and updates</dt>
+              <dd class="def-desc">Local inventory with the active version, content hash and consent state. Updates are previewed before they are applied, with rollback to the previous version.</dd>
+            </div>
+            <div class="def-row">
+              <dt class="def-term"><span class="term-prefix" aria-hidden="true">01.5 //</span> Collections</dt>
+              <dd class="def-desc">Curated groups of skills and related entries that install together for a complete workflow.</dd>
+            </div>
+            <div class="def-row">
+              <dt class="def-term"><span class="term-prefix" aria-hidden="true">01.6 //</span> Settings</dt>
+              <dd class="def-desc">Plugin-scoped settings, readable and writable only by the plugin itself, under the <code>settings:own</code> boundary.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- 02: How it works -->
+      <section id="how" class="section section-how" aria-labelledby="how-title">
+        <div class="section-lead-col">
+          <header class="section-header">
+            <span class="section-num" aria-hidden="true">02</span>
+            <p class="section-eyebrow">LIFECYCLE &amp; EXECUTION</p>
+            <h2 id="how-title">HOW IT WORKS</h2>
+          </header>
+          <p class="section-intro">
+            Six deterministic stages take a plugin from a Git index to a typed terminal
+            command. Every stage is enforced by Orca, and the plugin only ever acts inside
+            the boundaries the user approved.
+          </p>
+        </div>
+
+        <div class="section-content-col">
+          <div class="flow" id="flow">
+            <ol class="flow-steps" id="flow-steps">
+              <li class="flow-step is-current">
+                <button type="button" class="flow-btn" data-step="index" aria-pressed="true" aria-controls="flow-panel" tabindex="0">
+                  <span class="flow-num" aria-hidden="true">01</span>
+                  <span class="flow-name">Index</span>
+                  <span class="flow-sub">repo git · orca-marketplace.json</span>
+                </button>
+              </li>
+              <li class="flow-step">
+                <button type="button" class="flow-btn" data-step="validate" aria-pressed="false" aria-controls="flow-panel" tabindex="-1">
+                  <span class="flow-num" aria-hidden="true">02</span>
+                  <span class="flow-name">Validate</span>
+                  <span class="flow-sub">zod manifest · content hash</span>
+                </button>
+              </li>
+              <li class="flow-step">
+                <button type="button" class="flow-btn" data-step="consent" aria-pressed="false" aria-controls="flow-panel" tabindex="-1">
+                  <span class="flow-num" aria-hidden="true">03</span>
+                  <span class="flow-name">Consent</span>
+                  <span class="flow-sub">capabilities · explicit approval</span>
+                </button>
+              </li>
+              <li class="flow-step">
+                <button type="button" class="flow-btn" data-step="panel" aria-pressed="false" aria-controls="flow-panel" tabindex="-1">
+                  <span class="flow-num" aria-hidden="true">04</span>
+                  <span class="flow-name">Panel</span>
+                  <span class="flow-sub">iframe sandbox · one html</span>
+                </button>
+              </li>
+              <li class="flow-step">
+                <button type="button" class="flow-btn" data-step="host-api" aria-pressed="false" aria-controls="flow-panel" tabindex="-1">
+                  <span class="flow-num" aria-hidden="true">05</span>
+                  <span class="flow-name">Host API</span>
+                  <span class="flow-sub">postMessage · 3 actions</span>
+                </button>
+              </li>
+              <li class="flow-step">
+                <button type="button" class="flow-btn" data-step="terminal" aria-pressed="false" aria-controls="flow-panel" tabindex="-1">
+                  <span class="flow-num" aria-hidden="true">06</span>
+                  <span class="flow-name">Terminal</span>
+                  <span class="flow-sub">sendText · user-selected</span>
+                </button>
+              </li>
+            </ol>
+
+            <div class="flow-panel" id="flow-panel" role="region" aria-label="Selected stage details" aria-live="polite">
+              <div class="flow-panel-header">
+                <span class="flow-panel-tag" id="flow-panel-tag">STAGE 01 · INDEX</span>
+                <span class="flow-panel-status">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  <span id="flow-panel-owner">RUN BY: ORCA (HOST)</span>
+                </span>
+              </div>
+              <dl class="flow-detail" id="flow-detail">
+                <div class="flow-field">
+                  <dt>What happens</dt>
+                  <dd>Orca resolves the marketplace index from a Git repository. Each entry points to a plugin repository and a pinned ref, so every listing is reproducible.</dd>
+                </div>
+                <div class="flow-field">
+                  <dt>Run by</dt>
+                  <dd>Orca (host). The plugin is not installed or running yet at this stage.</dd>
+                </div>
+                <div class="flow-field">
+                  <dt>Can</dt>
+                  <dd>Read-only Git resolution of the index and its named refs.</dd>
+                </div>
+                <div class="flow-field">
+                  <dt>Cannot</dt>
+                  <dd>Execute or ingest any code. Indexing never activates anything.</dd>
+                </div>
+                <div class="flow-field">
+                  <dt>Tech fact</dt>
+                  <dd>Index file: <code>orca-marketplace.json</code> · installs resolve to a pinned Git ref.</dd>
+                </div>
+              </dl>
+              <p class="flow-keyboard-hint" aria-hidden="true">
+                <span class="hint-text">Stage controls: <kbd>Tab</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>Home</kbd> <kbd>End</kbd></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03: Install -->
+      <section id="install" class="section section-install" aria-labelledby="install-title">
+        <header class="section-header">
+          <span class="section-num" aria-hidden="true">03</span>
+          <p class="section-eyebrow">DEPLOYMENT & DISTRIBUTION</p>
+          <h2 id="install-title">INSTALL</h2>
+        </header>
+
+        <p class="section-intro">
+          Choose an install method in Orca ADE. Adding as a marketplace source ensures automatic index synchronization and rollback-enabled updates.
+        </p>
+
+        <div class="install-blocks">
+          <!-- Option 1: Marketplace Source -->
+          <div class="install-block install-block--recommended">
+            <div class="install-block-header">
+              <div class="install-title-group">
+                <h3>1 · Add as a marketplace source <span class="tag-recommended">RECOMMENDED</span></h3>
+                <span class="install-badge">AUTO-UPDATES ENABLED</span>
+              </div>
+            </div>
+            <p class="install-desc">
+              In Orca, open the plugins view and use <strong>Manage sources</strong> to add this Git URL as a marketplace source.
+              Then install Optimus Hub from the index. Installs added this way receive updates and rollback capabilities.
+            </p>
+            <div class="install-row">
+              <code class="install-cmd" id="install-cmd-source">https://github.com/aikogxstudios/optimus-hub-plugin.git</code>
+              <button class="btn btn-primary" type="button" id="copy-source" data-copy="https://github.com/aikogxstudios/optimus-hub-plugin.git">
+                Copy Source URL
+              </button>
+            </div>
+          </div>
+
+          <!-- Option 2: Direct Install -->
+          <div class="install-block install-block--direct">
+            <div class="install-block-header">
+              <div class="install-title-group">
+                <h3>2 · Direct install</h3>
+                <span class="install-badge">STATIC PINNED REF</span>
+              </div>
+            </div>
+            <p class="install-desc">
+              Alternatively, install the plugin source directly at the pinned ref.
+              A direct install does not receive updates; to update, repeat the install pointing at a newer ref.
+            </p>
+            <div class="install-row">
+              <code class="install-cmd" id="install-cmd-direct">https://github.com/aikogxstudios/optimus-hub-plugin#v0.2.0</code>
+              <button class="btn btn-ghost" type="button" id="copy-direct" data-copy="https://github.com/aikogxstudios/optimus-hub-plugin#v0.2.0">
+                Copy Direct URL
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <!-- 04: Permissions -->
+      <section id="permissions" class="section section-permissions" aria-labelledby="perm-title">
+        <header class="section-header">
+          <span class="section-num" aria-hidden="true">04</span>
+          <p class="section-eyebrow">CAPABILITY MANIFEST</p>
+          <h2 id="perm-title">PERMISSIONS</h2>
+        </header>
+
+        <p class="section-note">
+          Requested on install and shown verbatim in the consent dialog. Activation requires explicit approval.
+        </p>
+
+        <div class="table-container">
+          <table class="perm-table">
+            <thead>
+              <tr>
+                <th scope="col">Capability</th>
+                <th scope="col">What it grants</th>
+                <th scope="col">Boundary Constraint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>workspace:read</code></td>
+                <td>Read the name, branch and terminal list of your focused worktree.</td>
+                <td>Read-only access to focused worktree metadata; no raw filesystem browsing.</td>
+              </tr>
+              <tr>
+                <td><code>notifications:show</code></td>
+                <td>Show desktop notifications labeled with the plugin name.</td>
+                <td>Mandatory <code>[Optimus Hub]</code> prefix to eliminate prompt spoofing.</td>
+              </tr>
+              <tr>
+                <td><code>terminal:send</code></td>
+                <td>Type text into a terminal the plugin can see — always one specific terminal.</td>
+                <td>Target terminal must be user-selected; cannot spawn unmonitored sessions.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 05: Sandbox & Security -->
+      <section id="security" class="section section-security" aria-labelledby="sec-title">
+        <header class="section-header">
+          <span class="section-num" aria-hidden="true">05</span>
+          <p class="section-eyebrow">ISOLATION BOUNDARY</p>
+          <h2 id="sec-title">SANDBOX & SECURITY</h2>
+        </header>
+
+        <div class="sandbox-grid">
+          <div class="sandbox-cell">
+            <p class="cell-title"><span class="cell-sym" aria-hidden="true">▸</span> ZERO NETWORK ACCESS</p>
+            <p class="cell-desc">
+              The panel runs inside an isolated iframe with CSP <code>connect-src 'none'</code>. No outbound HTTP/HTTPS requests, no WebSockets, and zero external telemetry.
+            </p>
+          </div>
+          <div class="sandbox-cell">
+            <p class="cell-title"><span class="cell-sym" aria-hidden="true">▸</span> ZERO DISK ACCESS</p>
+            <p class="cell-desc">
+              No filesystem API bindings. Files and directories cannot be read or modified directly. Any data access must pass through Orca ADE's permission-checked host calls.
+            </p>
+          </div>
+          <div class="sandbox-cell">
+            <p class="cell-title"><span class="cell-sym" aria-hidden="true">▸</span> ISOLATED STORAGE (settings:own)</p>
+            <p class="cell-desc">
+              Settings and active marketplace sources are strictly scoped to the plugin's private namespace. Other extensions cannot inspect or tamper with this configuration.
+            </p>
+          </div>
+        </div>
+
+        <p class="sandbox-note" role="note">
+          <span class="note-sym" aria-hidden="true">▸</span>
+          The panel has no network and no disk access. It runs inside a sandboxed frame and communicates with the host only through the plugin API methods allowed for its session.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p><span class="prompt" aria-hidden="true">❯</span> <strong>Optimus Hub <span id="footer-version">v0.2.0</span></strong> — skills, MCP servers and collections for Orca ADE.</p>
+        <p class="footer-muted">Static presentation page · zero external dependencies · works offline · experimental software provided as is.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/aikogxstudios/optimus-hub-plugin" class="footer-link" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">↗</span> github.com/aikogxstudios/optimus-hub-plugin
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
